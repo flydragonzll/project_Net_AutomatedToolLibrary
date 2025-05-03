@@ -28,12 +28,30 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "Form1";
+            multiSelectTextBox1 = new AutomatedToolLibrary.组件类.MultiSelectTextBox();
+            SuspendLayout();
+            // 
+            // multiSelectTextBox1
+            // 
+            multiSelectTextBox1.Location = new Point(36, 27);
+            multiSelectTextBox1.Name = "multiSelectTextBox1";
+            multiSelectTextBox1.Size = new Size(253, 28);
+            multiSelectTextBox1.TabIndex = 0;
+            // 
+            // Form1
+            // 
+            AutoScaleDimensions = new SizeF(7F, 17F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(800, 450);
+            Controls.Add(multiSelectTextBox1);
+            Name = "Form1";
+            Text = "Form1";
+            Load += Form1_Load;
+            ResumeLayout(false);
         }
 
         #endregion
+
+        private 组件类.MultiSelectTextBox multiSelectTextBox1;
     }
 }

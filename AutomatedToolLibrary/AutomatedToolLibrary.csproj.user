@@ -4,11 +4,20 @@
     <Compile Update="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="多平台自动化\UCVideoConfigList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="组件类\MultiSelectTextBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="多平台自动化\MultiPlatformAutomation.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Tools.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="多平台自动化\UCVideoConfig.cs">
+      <SubType>UserControl</SubType>
     </Compile>
   </ItemGroup>
 </Project>

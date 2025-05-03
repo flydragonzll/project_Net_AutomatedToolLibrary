@@ -6,5 +6,10 @@ namespace AutomatedToolLibrary
         {
             InitializeComponent();
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            multiSelectTextBox1.Text = "1234567890";
+        }
     }
 }

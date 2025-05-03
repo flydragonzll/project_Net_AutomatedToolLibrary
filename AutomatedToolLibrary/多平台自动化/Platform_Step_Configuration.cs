@@ -13,7 +13,7 @@ namespace AutomatedToolLibrary.多平台自动化
         #region 【界面操作 - 步骤配置】
 
         /// <summary>
-        /// 向 TabPage 中添加步骤配置控件（参考、种类、处理方式、步骤 Type 下拉等）
+        /// 向 TabPage 中添加步骤配置控件（接口参考、相关配置、核心功能、步骤 Type 下拉等）
         /// </summary>
         public static void AddStepConfigControls(TabPage tabPage_步骤配置页)
         {
@@ -29,54 +29,65 @@ namespace AutomatedToolLibrary.多平台自动化
             panel_步骤配置_控制面板.Padding = new Padding(5);
             panel_步骤配置_控制面板.BorderStyle = BorderStyle.FixedSingle;
 
+            // 接口参考下拉框
+            Label label_步骤配置_接口参考 = CreateLabel("接口参考");
+            ComboBox comboBox_步骤配置_接口参考 = CreateComboBox(DockStyle.Top, ComboBoxStyle.DropDownList);
+            comboBox_步骤配置_接口参考.Items.AddRange(MultiPlatformAutomation_Playwright_APIreference_DataSource._referenceOptions.Keys.ToArray());
+            comboBox_步骤配置_接口参考.SelectedIndex = 0;
+
+            // 相关配置下拉框
+            Label label_步骤配置_相关配置 = CreateLabel("相关配置");
+            ComboBox comboBox_步骤配置_相关配置 = CreateComboBox(DockStyle.Top, ComboBoxStyle.DropDownList);
+            comboBox_步骤配置_相关配置.Items.AddRange(MultiPlatformAutomation_Playwright_APIreference_DataSource._referenceOptions["Classes"]);
+            comboBox_步骤配置_相关配置.SelectedIndex = 0;
+
+            // 核心功能下拉框
+            Label label_步骤配置_核心功能 = CreateLabel("核心功能");
+            ComboBox comboBox_步骤配置_核心功能 = CreateComboBox(DockStyle.Top, ComboBoxStyle.DropDownList);
+            UpdateHandlerComboBox(comboBox_步骤配置_核心功能, comboBox_步骤配置_相关配置.SelectedItem?.ToString() ?? "");
+
+            // 实现方法下拉框
+            Label label_步骤配置_实现方法 = CreateLabel("实现方法");
+            ComboBox comboBox_步骤配置_实现方法 = CreateComboBox(DockStyle.Top, ComboBoxStyle.DropDownList);
+
+            panel_步骤配置_控制面板.Controls.Add(comboBox_步骤配置_实现方法);
+            panel_步骤配置_控制面板.Controls.Add(label_步骤配置_实现方法);
+
+            panel_步骤配置_控制面板.Controls.Add(comboBox_步骤配置_核心功能);
+            panel_步骤配置_控制面板.Controls.Add(label_步骤配置_核心功能);
+
+
+            panel_步骤配置_控制面板.Controls.Add(comboBox_步骤配置_相关配置);
+            panel_步骤配置_控制面板.Controls.Add(label_步骤配置_相关配置);
+
+            panel_步骤配置_控制面板.Controls.Add(comboBox_步骤配置_接口参考);
+            panel_步骤配置_控制面板.Controls.Add(label_步骤配置_接口参考);
+            
             // 平台下拉框
             ComboBox comboBox_步骤配置_平台 = CreateComboBox(DockStyle.Top, ComboBoxStyle.DropDownList);
             LoadPlatformComboBox(comboBox_步骤配置_平台);
             panel_步骤配置_控制面板.Controls.Add(comboBox_步骤配置_平台);
 
-            // 参考下拉框
-            Label label_步骤配置_参考 = CreateLabel("参考");
-            ComboBox comboBox_步骤配置_参考 = CreateComboBox(DockStyle.Top, ComboBoxStyle.DropDownList);
-            comboBox_步骤配置_参考.Items.AddRange(MultiPlatformAutomation_Playwright_APIreference_DataSource._referenceOptions.Keys.ToArray());
-            comboBox_步骤配置_参考.SelectedIndex = 0;
-            panel_步骤配置_控制面板.Controls.Add(label_步骤配置_参考);
-            panel_步骤配置_控制面板.Controls.Add(comboBox_步骤配置_参考);
-
-            // 种类下拉框
-            Label label_步骤配置_种类 = CreateLabel("种类");
-            ComboBox comboBox_步骤配置_种类 = CreateComboBox(DockStyle.Top, ComboBoxStyle.DropDownList);
-            comboBox_步骤配置_种类.Items.AddRange(MultiPlatformAutomation_Playwright_APIreference_DataSource._referenceOptions["Classes"]);
-            comboBox_步骤配置_种类.SelectedIndex = 0;
-            panel_步骤配置_控制面板.Controls.Add(label_步骤配置_种类);
-            panel_步骤配置_控制面板.Controls.Add(comboBox_步骤配置_种类);
-
-            // 处理方式下拉框
-            Label label_步骤配置_处理方式 = CreateLabel("处理方式");
-            ComboBox comboBox_步骤配置_处理方式 = CreateComboBox(DockStyle.Top, ComboBoxStyle.DropDownList);
-            UpdateHandlerComboBox(comboBox_步骤配置_处理方式, comboBox_步骤配置_种类.SelectedItem?.ToString() ?? "");
-            panel_步骤配置_控制面板.Controls.Add(label_步骤配置_处理方式);
-            panel_步骤配置_控制面板.Controls.Add(comboBox_步骤配置_处理方式);
-
             // 新增步骤按钮
             Button button_步骤配置_新增步骤 = CreateButton("新增步骤", (s, e) =>
             {
-                if (string.IsNullOrEmpty(comboBox_步骤配置_参考.Text))
-                    MessageBox.Show("请选择参考");
-                else if (string.IsNullOrEmpty(comboBox_步骤配置_种类.Text))
-                    MessageBox.Show("请选择种类");
-                else if (string.IsNullOrEmpty(comboBox_步骤配置_处理方式.Text))
-                    MessageBox.Show("请选择处理方式");
+                if (string.IsNullOrEmpty(comboBox_步骤配置_接口参考.Text))
+                    MessageBox.Show("请选择接口参考");
+                else if (string.IsNullOrEmpty(comboBox_步骤配置_相关配置.Text))
+                    MessageBox.Show("请选择相关配置");
+                else if (string.IsNullOrEmpty(comboBox_步骤配置_核心功能.Text))
+                    MessageBox.Show("请选择核心功能");
                 else
                 {
-                    AddStepRow(panel_步骤配置_步骤, comboBox_步骤配置_参考.Text, comboBox_步骤配置_种类.Text, comboBox_步骤配置_处理方式.Text);
+                    AddStepRow(panel_步骤配置_步骤, comboBox_步骤配置_接口参考.Text, comboBox_步骤配置_相关配置.Text, comboBox_步骤配置_核心功能.Text);
                 }
             });
             panel_步骤配置_控制面板.Controls.Add(button_步骤配置_新增步骤);
 
-            // 注册种类变化事件，更新处理方式下拉内容
-            comboBox_步骤配置_种类.SelectedIndexChanged += (s, e) =>
+            // 注册相关配置变化事件，更新核心功能下拉内容
+            comboBox_步骤配置_相关配置.SelectedIndexChanged += (s, e) =>
             {
-                UpdateHandlerComboBox(comboBox_步骤配置_处理方式, comboBox_步骤配置_种类.SelectedItem?.ToString() ?? "");
+                UpdateHandlerComboBox(comboBox_步骤配置_核心功能, comboBox_步骤配置_相关配置.SelectedItem?.ToString() ?? "");
             };
 
             // 添加控件到界面
@@ -97,29 +108,29 @@ namespace AutomatedToolLibrary.多平台自动化
         }
 
         /// <summary>
-        /// 更新处理方式下拉框（根据种类判断是否为 Page/Mouse）
+        /// 更新核心功能下拉框（根据相关配置判断是否为 Page/Mouse）
         /// </summary>
-        private static void UpdateHandlerComboBox(ComboBox handlerComboBox_处理方式下拉框, string selectedCategory_选择的种类)
+        private static void UpdateHandlerComboBox(ComboBox handlerComboBox_核心功能下拉框, string selectedCategory_选择的相关配置)
         {
-            handlerComboBox_处理方式下拉框.Items.Clear();
+            handlerComboBox_核心功能下拉框.Items.Clear();
 
-            if (selectedCategory_选择的种类 == "Page" || selectedCategory_选择的种类 == "Mouse")
+            if (selectedCategory_选择的相关配置 == "Page" || selectedCategory_选择的相关配置 == "Mouse")
             {
-                handlerComboBox_处理方式下拉框.Items.AddRange(MultiPlatformAutomation_Playwright_APIreference_DataSource._handlerOptionsForPageAndMouse.Keys.ToArray());
+                handlerComboBox_核心功能下拉框.Items.AddRange(MultiPlatformAutomation_Playwright_APIreference_DataSource._handlerOptionsForPageAndMouse.Keys.ToArray());
             }
             else
             {
-                handlerComboBox_处理方式下拉框.Items.AddRange(MultiPlatformAutomation_Playwright_APIreference_DataSource._handlerOptionsOthers);
+                handlerComboBox_核心功能下拉框.Items.AddRange(MultiPlatformAutomation_Playwright_APIreference_DataSource._handlerOptionsOthers);
             }
 
-            if (handlerComboBox_处理方式下拉框.Items.Count > 0)
-                handlerComboBox_处理方式下拉框.SelectedIndex = 0;
+            if (handlerComboBox_核心功能下拉框.Items.Count > 0)
+                handlerComboBox_核心功能下拉框.SelectedIndex = 0;
         }
 
         /// <summary>
         /// 向面板中新增一个步骤配置行（GroupBox + Type 下拉框）
         /// </summary>
-        private static void AddStepRow(Panel panel_步骤配置面板, string reference_参考, string category_种类, string handler_处理方式)
+        private static void AddStepRow(Panel panel_步骤配置面板, string reference_接口参考, string category_相关配置, string handler_核心功能)
         {
             GroupBox groupBox_步骤配置_步骤 = new GroupBox();
             groupBox_步骤配置_步骤.Text = $"步骤{MultiPlatformAutomation_Playwright_APIreference_DataSource.stepIndex++}";
@@ -129,7 +140,7 @@ namespace AutomatedToolLibrary.多平台自动化
 
             ComboBox comboBox_步骤配置_Type = CreateComboBox(DockStyle.Top, ComboBoxStyle.DropDownList);
 
-            if (reference_参考 == "Classes" && category_种类 == "Page" && handler_处理方式 == "Methods")
+            if (reference_接口参考 == "Classes" && category_相关配置 == "Page" && handler_核心功能 == "Methods")
             {
                 comboBox_步骤配置_Type.Items.AddRange(MultiPlatformAutomation_Playwright_APIreference_DataSource._handlerOptionsForPageAndMouse["Methods"]);
             }
