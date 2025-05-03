@@ -90,7 +90,7 @@ namespace AutomatedToolLibrary.多平台自动化
                 Video_Configuration.AddVideoConfigControls(tabPage1);
                 tabControl.TabPages.Add(tabPage1);
 
-                var tabPage2 = new TabPage("媒体选择及操作步骤配置");
+                var tabPage2 = new TabPage("媒体选择及操作步骤配置1");
                 Platform_Step_Configuration.AddStepConfigControls(tabPage2);
                 tabControl.TabPages.Add(tabPage2);
             }

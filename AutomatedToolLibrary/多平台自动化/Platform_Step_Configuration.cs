@@ -21,6 +21,13 @@ namespace AutomatedToolLibrary.多平台自动化
             panel_步骤配置_主容器.Dock = DockStyle.Fill;
             panel_步骤配置_主容器.AutoScroll = true;
 
+            Panel panel_步骤配置_步骤 = new Panel();
+            panel_步骤配置_步骤.Dock = DockStyle.Fill;
+            panel_步骤配置_步骤.AutoSize = true;
+            panel_步骤配置_步骤.Padding = new Padding(5);
+            panel_步骤配置_步骤.BorderStyle = BorderStyle.FixedSingle;
+            panel_步骤配置_主容器.Controls.Add(panel_步骤配置_步骤);
+
             Panel panel_步骤配置_控制面板 = new Panel();
             panel_步骤配置_控制面板.Width = 300;
             panel_步骤配置_控制面板.Dock = DockStyle.Right;
@@ -89,7 +96,7 @@ namespace AutomatedToolLibrary.多平台自动化
                     MessageBox.Show("请选择处理方式");
                 else
                 {
-                    AddStepRow(panel_步骤配置_主容器, comboBox_步骤配置_参考.Text, comboBox_步骤配置_种类.Text, comboBox_步骤配置_处理方式.Text);
+                    AddStepRow(panel_步骤配置_步骤, comboBox_步骤配置_参考.Text, comboBox_步骤配置_种类.Text, comboBox_步骤配置_处理方式.Text);
                 }
             };
             panel_步骤配置_控制面板.Controls.Add(button_步骤配置_新增步骤);
