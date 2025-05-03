@@ -28,81 +28,81 @@ namespace AutomatedToolLibrary.多平台自动化
         /// </summary>
         private void InitializeComponent()
         {
-            btnLoadZLL = new Button();
-            btnSaveZLL = new Button();
-            btnAddPlatform = new Button();
-            panel_Fill = new Panel();
-            panel_Top = new Panel();
-            panel_Top.SuspendLayout();
+            MultiPlatformAutomation_PanelTop_Button加载ZLL文件 = new Button();
+            MultiPlatformAutomation_PanelTop_Button保持ZLL文件 = new Button();
+            MultiPlatformAutomation_PanelTop_Button添加媒体 = new Button();
+            MultiPlatformAutomation_PanelFill = new Panel();
+            MultiPlatformAutomation_PanelTop = new Panel();
+            MultiPlatformAutomation_PanelTop.SuspendLayout();
             SuspendLayout();
             // 
-            // btnLoadZLL
+            // MultiPlatformAutomation_PanelTop_Button加载ZLL文件
             // 
-            btnLoadZLL.Location = new Point(12, 12);
-            btnLoadZLL.Name = "btnLoadZLL";
-            btnLoadZLL.Size = new Size(100, 23);
-            btnLoadZLL.TabIndex = 0;
-            btnLoadZLL.Text = "加载ZLL文件";
-            btnLoadZLL.UseVisualStyleBackColor = true;
-            btnLoadZLL.Click += btnLoadZLL_Click;
+            MultiPlatformAutomation_PanelTop_Button加载ZLL文件.Location = new Point(12, 12);
+            MultiPlatformAutomation_PanelTop_Button加载ZLL文件.Name = "MultiPlatformAutomation_PanelTop_Button加载ZLL文件";
+            MultiPlatformAutomation_PanelTop_Button加载ZLL文件.Size = new Size(100, 23);
+            MultiPlatformAutomation_PanelTop_Button加载ZLL文件.TabIndex = 0;
+            MultiPlatformAutomation_PanelTop_Button加载ZLL文件.Text = "加载ZLL文件";
+            MultiPlatformAutomation_PanelTop_Button加载ZLL文件.UseVisualStyleBackColor = true;
+            MultiPlatformAutomation_PanelTop_Button加载ZLL文件.Click += MultiPlatformAutomation_PanelTop_Button加载ZLL文件_Click;
             // 
-            // btnSaveZLL
+            // MultiPlatformAutomation_PanelTop_Button保持ZLL文件
             // 
-            btnSaveZLL.Location = new Point(118, 12);
-            btnSaveZLL.Name = "btnSaveZLL";
-            btnSaveZLL.Size = new Size(100, 23);
-            btnSaveZLL.TabIndex = 1;
-            btnSaveZLL.Text = "保存ZLL文件";
-            btnSaveZLL.UseVisualStyleBackColor = true;
-            btnSaveZLL.Click += btnSaveZLL_Click;
+            MultiPlatformAutomation_PanelTop_Button保持ZLL文件.Location = new Point(118, 12);
+            MultiPlatformAutomation_PanelTop_Button保持ZLL文件.Name = "MultiPlatformAutomation_PanelTop_Button保持ZLL文件";
+            MultiPlatformAutomation_PanelTop_Button保持ZLL文件.Size = new Size(100, 23);
+            MultiPlatformAutomation_PanelTop_Button保持ZLL文件.TabIndex = 1;
+            MultiPlatformAutomation_PanelTop_Button保持ZLL文件.Text = "保存ZLL文件";
+            MultiPlatformAutomation_PanelTop_Button保持ZLL文件.UseVisualStyleBackColor = true;
+            MultiPlatformAutomation_PanelTop_Button保持ZLL文件.Click += MultiPlatformAutomation_PanelTop_Button保持ZLL文件_Click;
             // 
-            // btnAddPlatform
+            // MultiPlatformAutomation_PanelTop_Button添加媒体
             // 
-            btnAddPlatform.Location = new Point(224, 12);
-            btnAddPlatform.Name = "btnAddPlatform";
-            btnAddPlatform.Size = new Size(100, 23);
-            btnAddPlatform.TabIndex = 2;
-            btnAddPlatform.Text = "添加媒体";
-            btnAddPlatform.UseVisualStyleBackColor = true;
-            btnAddPlatform.Click += btnAddPlatform_Click;
+            MultiPlatformAutomation_PanelTop_Button添加媒体.Location = new Point(224, 12);
+            MultiPlatformAutomation_PanelTop_Button添加媒体.Name = "MultiPlatformAutomation_PanelTop_Button添加媒体";
+            MultiPlatformAutomation_PanelTop_Button添加媒体.Size = new Size(100, 23);
+            MultiPlatformAutomation_PanelTop_Button添加媒体.TabIndex = 2;
+            MultiPlatformAutomation_PanelTop_Button添加媒体.Text = "添加媒体";
+            MultiPlatformAutomation_PanelTop_Button添加媒体.UseVisualStyleBackColor = true;
+            MultiPlatformAutomation_PanelTop_Button添加媒体.Click += MultiPlatformAutomation_PanelTop_Button添加媒体_Click;
             // 
-            // panel_Fill
+            // MultiPlatformAutomation_PanelFill
             // 
-            panel_Fill.Dock = DockStyle.Fill;
-            panel_Fill.Location = new Point(0, 46);
-            panel_Fill.Name = "panel_Fill";
-            panel_Fill.Size = new Size(854, 597);
-            panel_Fill.TabIndex = 3;
+            MultiPlatformAutomation_PanelFill.Dock = DockStyle.Fill;
+            MultiPlatformAutomation_PanelFill.Location = new Point(0, 46);
+            MultiPlatformAutomation_PanelFill.Name = "MultiPlatformAutomation_PanelFill";
+            MultiPlatformAutomation_PanelFill.Size = new Size(854, 597);
+            MultiPlatformAutomation_PanelFill.TabIndex = 3;
             // 
-            // panel_Top
+            // MultiPlatformAutomation_PanelTop
             // 
-            panel_Top.Controls.Add(btnAddPlatform);
-            panel_Top.Controls.Add(btnSaveZLL);
-            panel_Top.Controls.Add(btnLoadZLL);
-            panel_Top.Dock = DockStyle.Top;
-            panel_Top.Location = new Point(0, 0);
-            panel_Top.Name = "panel_Top";
-            panel_Top.Size = new Size(854, 46);
-            panel_Top.TabIndex = 4;
+            MultiPlatformAutomation_PanelTop.Controls.Add(MultiPlatformAutomation_PanelTop_Button添加媒体);
+            MultiPlatformAutomation_PanelTop.Controls.Add(MultiPlatformAutomation_PanelTop_Button保持ZLL文件);
+            MultiPlatformAutomation_PanelTop.Controls.Add(MultiPlatformAutomation_PanelTop_Button加载ZLL文件);
+            MultiPlatformAutomation_PanelTop.Dock = DockStyle.Top;
+            MultiPlatformAutomation_PanelTop.Location = new Point(0, 0);
+            MultiPlatformAutomation_PanelTop.Name = "MultiPlatformAutomation_PanelTop";
+            MultiPlatformAutomation_PanelTop.Size = new Size(854, 46);
+            MultiPlatformAutomation_PanelTop.TabIndex = 4;
             // 
             // MultiPlatformAutomation
             // 
             ClientSize = new Size(854, 643);
-            Controls.Add(panel_Fill);
-            Controls.Add(panel_Top);
+            Controls.Add(MultiPlatformAutomation_PanelFill);
+            Controls.Add(MultiPlatformAutomation_PanelTop);
             Name = "MultiPlatformAutomation";
             Text = "视频上传配置工具";
-            panel_Top.ResumeLayout(false);
+            MultiPlatformAutomation_PanelTop.ResumeLayout(false);
             ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Button btnLoadZLL;
-        private System.Windows.Forms.Button btnSaveZLL;
-        private System.Windows.Forms.Button btnAddPlatform;
-        private Panel panel_Fill;
-        private Panel panel_Top;
+        private System.Windows.Forms.Button MultiPlatformAutomation_PanelTop_Button加载ZLL文件;
+        private System.Windows.Forms.Button MultiPlatformAutomation_PanelTop_Button保持ZLL文件;
+        private System.Windows.Forms.Button MultiPlatformAutomation_PanelTop_Button添加媒体;
+        private Panel MultiPlatformAutomation_PanelFill;
+        private Panel MultiPlatformAutomation_PanelTop;
     }
 }

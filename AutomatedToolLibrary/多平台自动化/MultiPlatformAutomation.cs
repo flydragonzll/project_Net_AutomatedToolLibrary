@@ -79,53 +79,10 @@ namespace AutomatedToolLibrary.多平台自动化
         /// </summary>
         private void btnAddPlatform_Click(object sender, EventArgs e)
         {
-            TabControl tabControl = panel_Fill.Controls.OfType<TabControl>().FirstOrDefault();
-            if (tabControl == null)
-            {
-                tabControl = new TabControl();
-                tabControl.Dock = DockStyle.Fill;
-                panel_Fill.Controls.Add(tabControl);
-
-                var tabPage1 = new TabPage("视频配置");
-                Video_Configuration.AddVideoConfigControls(tabPage1);
-                tabControl.TabPages.Add(tabPage1);
-
-                var tabPage2 = new TabPage("媒体选择及操作步骤配置1");
-                Platform_Step_Configuration.AddStepConfigControls(tabPage2);
-                tabControl.TabPages.Add(tabPage2);
-            }
-            else
-            {
-                if (tabControl.TabPages.Count == 0)
-                {
-                    var tabPage1 = new TabPage("视频配置");
-                    Video_Configuration.AddVideoConfigControls(tabPage1);
-                    tabControl.TabPages.Add(tabPage1);
-
-                    var tabPage2 = new TabPage("媒体选择及操作步骤配置");
-                    Platform_Step_Configuration.AddStepConfigControls(tabPage2);
-                    tabControl.TabPages.Add(tabPage2);
-                }
-                else
-                {
-                    int nextIndex = tabControl.TabPages.Count + 1;
-                    var newTabPage = new TabPage($"媒体选择及操作步骤配置 {nextIndex - 1}");
-                    Platform_Step_Configuration.AddStepConfigControls(newTabPage);
-                    tabControl.TabPages.Add(newTabPage);
-                }
-            }
+            
         }
 
         #endregion
-
-
-
-
-
-
-
-
-
         #region 【设计模式 - 控件工厂】
 
         /// <summary>
@@ -155,5 +112,61 @@ namespace AutomatedToolLibrary.多平台自动化
         }
 
         #endregion
+        #region MultiPlatformAutomation_PanelTop
+        private void MultiPlatformAutomation_PanelTop_Button加载ZLL文件_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void MultiPlatformAutomation_PanelTop_Button保持ZLL文件_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        
+        private void MultiPlatformAutomation_PanelTop_Button添加媒体_Click(object sender, EventArgs e)
+        {
+            TabControl TabControlFill = MultiPlatformAutomation_PanelFill.Controls.OfType<TabControl>().FirstOrDefault();
+            if (TabControlFill == null)
+            {
+                TabControlFill = new TabControl();
+                TabControlFill.Dock = DockStyle.Fill;
+                MultiPlatformAutomation_PanelFill.Controls.Add(TabControlFill);
+
+
+                var tabPage1 = new TabPage("视频配置");
+                UCVideoConfigList uCVideoConfigList = new UCVideoConfigList();
+                uCVideoConfigList.Dock = DockStyle.Fill;
+                tabPage1.Controls.Add(uCVideoConfigList);
+                TabControlFill.TabPages.Add(tabPage1);
+                
+
+
+                var tabPage2 = new TabPage("媒体选择及操作步骤配置1");
+                Platform_Step_Configuration.AddStepConfigControls(tabPage2);
+                TabControlFill.TabPages.Add(tabPage2);
+            }
+            else
+            {
+                if (TabControlFill.TabPages.Count == 0)
+                {
+                    var tabPage1 = new TabPage("视频配置");
+                    Video_Configuration.AddVideoConfigControls(tabPage1);
+                    TabControlFill.TabPages.Add(tabPage1);
+
+                    var tabPage2 = new TabPage("媒体选择及操作步骤配置");
+                    Platform_Step_Configuration.AddStepConfigControls(tabPage2);
+                    TabControlFill.TabPages.Add(tabPage2);
+                }
+                else
+                {
+                    int nextIndex = TabControlFill.TabPages.Count + 1;
+                    var newTabPage = new TabPage($"媒体选择及操作步骤配置 {nextIndex - 1}");
+                    Platform_Step_Configuration.AddStepConfigControls(newTabPage);
+                    TabControlFill.TabPages.Add(newTabPage);
+                }
+            }
+        }
+        #endregion MultiPlatformAutomation_PanelTop
+
     }
 }

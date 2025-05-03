@@ -26,7 +26,7 @@ namespace AutomatedToolLibrary
                 ApplicationConfiguration.Initialize();
 
                 // 启动主窗体
-                Application.Run(new Form1());
+                Application.Run(new MultiPlatformAutomation());
             }
             catch (Exception ex)
             {
