@@ -1,0 +1,5 @@
+/.vs
+/AutomatedToolLibrary/obj
+/AutomatedToolLibrary/bin
+/VideoAutoUpload.Playwright/bin
+/VideoAutoUpload.Playwright/obj

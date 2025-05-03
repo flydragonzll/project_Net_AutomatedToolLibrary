@@ -1,0 +1,31 @@
+
+//using System;
+//using System.Threading.Tasks;
+//namespace VideoAutoUpload.Playwright
+//{
+//    /// <summary>
+//    /// 百家号Cookie获取示例
+//    /// </summary>
+//    public class GetBaijiahaoCookieExample
+//    {
+//        /// <summary>
+//        /// 主入口方法
+//        /// </summary>
+//        public static async Task Main()
+//        {
+//            try
+//            {
+//                Console.WriteLine("开始获取百家号Cookie...");
+
+//                var uploader = new BaijiahaoUploader("baijiahao_cookie.json");
+//                await uploader.GetNewCookieAsync();
+
+//                Console.WriteLine("Cookie获取成功，已保存到 baijiahao_cookie.json");
+//            }
+//            catch (Exception ex)
+//            {
+//                Console.WriteLine($"获取Cookie失败: {ex.Message}");
+//            }
+//        }
+//    }
+//}

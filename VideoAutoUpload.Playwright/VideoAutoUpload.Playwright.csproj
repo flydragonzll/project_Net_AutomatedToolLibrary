@@ -1,0 +1,165 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="9.0.4" />
+    <PackageReference Include="Microsoft.Playwright" Version="1.51.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="utils\stealth.min.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Models\Step\_APIreference\_Classes\_Accessibility\Deprecated\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_Accessibility\Events\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_Accessibility\Methods\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_Accessibility\Properties\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_APIRequestContext\Deprecated\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_APIRequestContext\Events\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_APIRequestContext\Methods\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_APIRequestContext\Properties\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_APIRequest\Deprecated\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_APIRequest\Events\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_APIRequest\Methods\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_APIRequest\Properties\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_APIResponse\Deprecated\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_APIResponse\Events\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_APIResponse\Methods\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_APIResponse\Properties\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_BrowserContext\Deprecated\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_BrowserContext\Events\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_BrowserContext\Methods\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_BrowserContext\Properties\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_BrowserType\Deprecated\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_BrowserType\Events\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_BrowserType\Methods\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_BrowserType\Properties\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_Browser\Deprecated\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_Browser\Events\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_Browser\Methods\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_Browser\Properties\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_CDPSessionEvent\Deprecated\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_CDPSessionEvent\Events\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_CDPSessionEvent\Methods\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_CDPSessionEvent\Properties\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_CDPSession\Deprecated\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_CDPSession\Events\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_CDPSession\Methods\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_CDPSession\Properties\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_Clock\Deprecated\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_Clock\Events\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_Clock\Methods\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_Clock\Properties\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_ConsoleMessage\Deprecated\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_ConsoleMessage\Events\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_ConsoleMessage\Methods\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_ConsoleMessage\Properties\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_Dialog\Deprecated\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_Dialog\Events\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_Dialog\Methods\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_Dialog\Properties\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_Download\Deprecated\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_Download\Events\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_Download\Methods\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_Download\Properties\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_ElementHandle\Deprecated\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_ElementHandle\Events\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_ElementHandle\Methods\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_ElementHandle\Properties\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_FileChooser\Deprecated\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_FileChooser\Events\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_FileChooser\Methods\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_FileChooser\Properties\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_FormData\Deprecated\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_FormData\Events\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_FormData\Methods\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_FormData\Properties\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_FrameLocator\Deprecated\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_FrameLocator\Events\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_FrameLocator\Methods\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_FrameLocator\Properties\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_Frame\Deprecated\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_Frame\Events\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_Frame\Methods\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_Frame\Properties\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_JSHandle\Deprecated\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_JSHandle\Events\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_JSHandle\Methods\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_JSHandle\Properties\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_Keyboard\Deprecated\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_Keyboard\Events\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_Keyboard\Methods\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_Keyboard\Properties\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_Locator\Deprecated\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_Locator\Events\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_Locator\Methods\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_Locator\Properties\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_Mouse\Deprecated\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_Mouse\Events\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_Mouse\Methods\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_Mouse\Properties\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_Request\Deprecated\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_Request\Events\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_Request\Methods\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_Request\Properties\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_Response\Deprecated\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_Response\Events\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_Response\Methods\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_Response\Properties\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_Route\Deprecated\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_Route\Events\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_Route\Methods\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_Route\Properties\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_Selectors\Deprecated\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_Selectors\Events\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_Selectors\Methods\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_Selectors\Properties\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_TimeoutError\Deprecated\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_TimeoutError\Events\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_TimeoutError\Methods\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_TimeoutError\Properties\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_Touchscreen\Deprecated\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_Touchscreen\Events\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_Touchscreen\Methods\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_Touchscreen\Properties\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_Tracing\Deprecated\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_Tracing\Events\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_Tracing\Methods\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_Tracing\Properties\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_Video\Deprecated\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_Video\Events\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_Video\Methods\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_Video\Properties\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_WebError\Deprecated\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_WebError\Events\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_WebError\Methods\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_WebError\Properties\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_WebSocketFrame\Deprecated\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_WebSocketFrame\Events\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_WebSocketFrame\Methods\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_WebSocketFrame\Properties\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_WebSocketRoute\Deprecated\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_WebSocketRoute\Events\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_WebSocketRoute\Methods\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_WebSocketRoute\Properties\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_WebSocket\Deprecated\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_WebSocket\Events\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_WebSocket\Methods\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_WebSocket\Properties\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_Worker\Deprecated\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_Worker\Events\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_Worker\Methods\" />
+    <Folder Include="Models\Step\_APIreference\_Classes\_Worker\Properties\" />
+    <Folder Include="Models\Step\_APIreference\_Playwright\" />
+    <Folder Include="Models\Step\_APIreference\_Assertions\" />
+  </ItemGroup>
+
+</Project>
