@@ -30,7 +30,9 @@
         {
             UCVideoConfig_GroupBox配置视频 = new GroupBox();
             UCVideoConfig_GroupBox配置视频_GroupBox标签 = new GroupBox();
+            UCVideoConfig_GroupBox配置视频_GroupBox标签_FlowLayoutPanelFill = new FlowLayoutPanel();
             UCVideoConfig_GroupBox配置视频_GroupBox标题 = new GroupBox();
+            UCVideoConfig_GroupBox配置视频_GroupBox标题_FlowLayoutPanelFill = new FlowLayoutPanel();
             UCVideoConfig_GroupBox配置视频_GroupBox视频路径 = new GroupBox();
             UCVideoConfig_GroupBox配置视频_GroupBox视频路径_Button选择视频 = new Button();
             UCVideoConfig_GroupBox配置视频_GroupBox视频路径_TextBox视频路径 = new TextBox();
@@ -40,8 +42,6 @@
             UCVideoConfig_GroupBox配置视频_Panel功能选项_CheckBox标签AI生成 = new CheckBox();
             UCVideoConfig_GroupBox配置视频_Panel功能选项_CheckBox标题AI优化 = new CheckBox();
             label_视频自动上传_标签 = new Label();
-            UCVideoConfig_GroupBox配置视频_GroupBox标题_FlowLayoutPanelFill = new FlowLayoutPanel();
-            UCVideoConfig_GroupBox配置视频_GroupBox标签_FlowLayoutPanelFill = new FlowLayoutPanel();
             UCVideoConfig_GroupBox配置视频.SuspendLayout();
             UCVideoConfig_GroupBox配置视频_GroupBox标签.SuspendLayout();
             UCVideoConfig_GroupBox配置视频_GroupBox标题.SuspendLayout();
@@ -59,7 +59,7 @@
             UCVideoConfig_GroupBox配置视频.Dock = DockStyle.Fill;
             UCVideoConfig_GroupBox配置视频.Location = new Point(0, 0);
             UCVideoConfig_GroupBox配置视频.Name = "UCVideoConfig_GroupBox配置视频";
-            UCVideoConfig_GroupBox配置视频.Size = new Size(756, 261);
+            UCVideoConfig_GroupBox配置视频.Size = new Size(756, 351);
             UCVideoConfig_GroupBox配置视频.TabIndex = 0;
             UCVideoConfig_GroupBox配置视频.TabStop = false;
             UCVideoConfig_GroupBox配置视频.Text = "请配置第_序号_个视频";
@@ -68,12 +68,21 @@
             // 
             UCVideoConfig_GroupBox配置视频_GroupBox标签.Controls.Add(UCVideoConfig_GroupBox配置视频_GroupBox标签_FlowLayoutPanelFill);
             UCVideoConfig_GroupBox配置视频_GroupBox标签.Dock = DockStyle.Top;
-            UCVideoConfig_GroupBox配置视频_GroupBox标签.Location = new Point(3, 180);
+            UCVideoConfig_GroupBox配置视频_GroupBox标签.Location = new Point(3, 240);
             UCVideoConfig_GroupBox配置视频_GroupBox标签.Name = "UCVideoConfig_GroupBox配置视频_GroupBox标签";
-            UCVideoConfig_GroupBox配置视频_GroupBox标签.Size = new Size(750, 71);
+            UCVideoConfig_GroupBox配置视频_GroupBox标签.Size = new Size(750, 106);
             UCVideoConfig_GroupBox配置视频_GroupBox标签.TabIndex = 22;
             UCVideoConfig_GroupBox配置视频_GroupBox标签.TabStop = false;
             UCVideoConfig_GroupBox配置视频_GroupBox标签.Text = "标签";
+            // 
+            // UCVideoConfig_GroupBox配置视频_GroupBox标签_FlowLayoutPanelFill
+            // 
+            UCVideoConfig_GroupBox配置视频_GroupBox标签_FlowLayoutPanelFill.AutoScroll = true;
+            UCVideoConfig_GroupBox配置视频_GroupBox标签_FlowLayoutPanelFill.Dock = DockStyle.Fill;
+            UCVideoConfig_GroupBox配置视频_GroupBox标签_FlowLayoutPanelFill.Location = new Point(3, 19);
+            UCVideoConfig_GroupBox配置视频_GroupBox标签_FlowLayoutPanelFill.Name = "UCVideoConfig_GroupBox配置视频_GroupBox标签_FlowLayoutPanelFill";
+            UCVideoConfig_GroupBox配置视频_GroupBox标签_FlowLayoutPanelFill.Size = new Size(744, 84);
+            UCVideoConfig_GroupBox配置视频_GroupBox标签_FlowLayoutPanelFill.TabIndex = 1;
             // 
             // UCVideoConfig_GroupBox配置视频_GroupBox标题
             // 
@@ -81,10 +90,19 @@
             UCVideoConfig_GroupBox配置视频_GroupBox标题.Dock = DockStyle.Top;
             UCVideoConfig_GroupBox配置视频_GroupBox标题.Location = new Point(3, 104);
             UCVideoConfig_GroupBox配置视频_GroupBox标题.Name = "UCVideoConfig_GroupBox配置视频_GroupBox标题";
-            UCVideoConfig_GroupBox配置视频_GroupBox标题.Size = new Size(750, 76);
+            UCVideoConfig_GroupBox配置视频_GroupBox标题.Size = new Size(750, 136);
             UCVideoConfig_GroupBox配置视频_GroupBox标题.TabIndex = 21;
             UCVideoConfig_GroupBox配置视频_GroupBox标题.TabStop = false;
             UCVideoConfig_GroupBox配置视频_GroupBox标题.Text = "标题";
+            // 
+            // UCVideoConfig_GroupBox配置视频_GroupBox标题_FlowLayoutPanelFill
+            // 
+            UCVideoConfig_GroupBox配置视频_GroupBox标题_FlowLayoutPanelFill.AutoScroll = true;
+            UCVideoConfig_GroupBox配置视频_GroupBox标题_FlowLayoutPanelFill.Dock = DockStyle.Fill;
+            UCVideoConfig_GroupBox配置视频_GroupBox标题_FlowLayoutPanelFill.Location = new Point(3, 19);
+            UCVideoConfig_GroupBox配置视频_GroupBox标题_FlowLayoutPanelFill.Name = "UCVideoConfig_GroupBox配置视频_GroupBox标题_FlowLayoutPanelFill";
+            UCVideoConfig_GroupBox配置视频_GroupBox标题_FlowLayoutPanelFill.Size = new Size(744, 114);
+            UCVideoConfig_GroupBox配置视频_GroupBox标题_FlowLayoutPanelFill.TabIndex = 0;
             // 
             // UCVideoConfig_GroupBox配置视频_GroupBox视频路径
             // 
@@ -187,31 +205,13 @@
             label_视频自动上传_标签.Size = new Size(0, 17);
             label_视频自动上传_标签.TabIndex = 13;
             // 
-            // UCVideoConfig_GroupBox配置视频_GroupBox标题_FlowLayoutPanelFill
-            // 
-            UCVideoConfig_GroupBox配置视频_GroupBox标题_FlowLayoutPanelFill.AutoScroll = true;
-            UCVideoConfig_GroupBox配置视频_GroupBox标题_FlowLayoutPanelFill.Dock = DockStyle.Fill;
-            UCVideoConfig_GroupBox配置视频_GroupBox标题_FlowLayoutPanelFill.Location = new Point(3, 19);
-            UCVideoConfig_GroupBox配置视频_GroupBox标题_FlowLayoutPanelFill.Name = "UCVideoConfig_GroupBox配置视频_GroupBox标题_FlowLayoutPanelFill";
-            UCVideoConfig_GroupBox配置视频_GroupBox标题_FlowLayoutPanelFill.Size = new Size(744, 54);
-            UCVideoConfig_GroupBox配置视频_GroupBox标题_FlowLayoutPanelFill.TabIndex = 0;
-            // 
-            // UCVideoConfig_GroupBox配置视频_GroupBox标签_FlowLayoutPanelFill
-            // 
-            UCVideoConfig_GroupBox配置视频_GroupBox标签_FlowLayoutPanelFill.AutoScroll = true;
-            UCVideoConfig_GroupBox配置视频_GroupBox标签_FlowLayoutPanelFill.Dock = DockStyle.Fill;
-            UCVideoConfig_GroupBox配置视频_GroupBox标签_FlowLayoutPanelFill.Location = new Point(3, 19);
-            UCVideoConfig_GroupBox配置视频_GroupBox标签_FlowLayoutPanelFill.Name = "UCVideoConfig_GroupBox配置视频_GroupBox标签_FlowLayoutPanelFill";
-            UCVideoConfig_GroupBox配置视频_GroupBox标签_FlowLayoutPanelFill.Size = new Size(744, 49);
-            UCVideoConfig_GroupBox配置视频_GroupBox标签_FlowLayoutPanelFill.TabIndex = 1;
-            // 
             // UCVideoConfig
             // 
             AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(UCVideoConfig_GroupBox配置视频);
             Name = "UCVideoConfig";
-            Size = new Size(756, 261);
+            Size = new Size(756, 351);
             UCVideoConfig_GroupBox配置视频.ResumeLayout(false);
             UCVideoConfig_GroupBox配置视频.PerformLayout();
             UCVideoConfig_GroupBox配置视频_GroupBox标签.ResumeLayout(false);

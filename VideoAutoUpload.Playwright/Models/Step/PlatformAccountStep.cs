@@ -37,7 +37,7 @@ namespace VideoAutoUpload.Playwright.Models.Step
         /// <summary>
         /// Playwright相关配置
         /// </summary>
-        [Description("Playwright配置")]
+        [Description("Platform配置")]
         [JsonPropertyName("_playwright")]
         public _Playwright _playwright { get; set; } = new _Playwright();
 

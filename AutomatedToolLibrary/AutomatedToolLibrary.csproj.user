@@ -4,7 +4,13 @@
     <Compile Update="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="多平台自动化\UCVideoConfigList.cs">
+    <Compile Update="多平台自动化\UC\UCStepConfig.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="多平台自动化\UC\UCStepConfigList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="多平台自动化\UC\UCVideoConfigList.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="组件类\MultiSelectTextBox.cs">
@@ -16,7 +22,7 @@
     <Compile Update="Tools.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="多平台自动化\UCVideoConfig.cs">
+    <Compile Update="多平台自动化\UC\UCVideoConfig.cs">
       <SubType>UserControl</SubType>
     </Compile>
   </ItemGroup>

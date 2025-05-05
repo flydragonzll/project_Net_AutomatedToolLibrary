@@ -2,11 +2,13 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.DirectoryServices.ActiveDirectory;
 using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using VideoAutoUpload.Playwright.Models;
+using VideoAutoUpload.Playwright.Models.Step;
 
 namespace AutomatedToolLibrary.多平台自动化.数据源
 {
@@ -17,75 +19,21 @@ namespace AutomatedToolLibrary.多平台自动化.数据源
         /// </summary>
         public static PlatformsConfig platformsConfig;
 
-        /// <summary>
-        /// 步骤编号计数器
-        /// </summary>
-        public static int stepIndex = 1;
-
-        /// <summary>
-        /// 视频编号计数器
-        /// </summary>
-        public static int videoIndex = 1;
-        #region 【字段定义】
-        /// <summary>
-        /// 参考类型数据源（如 Classes）
-        /// </summary>
-        public static Dictionary<string, string[]> _referenceOptions = new()
+        protected static List<Playwright_APIreference> playwright_APIreferenceList { get; private set; } = new List<Playwright_APIreference>();
+        public static readonly string DefaultDataType = "|string|int|double|bool|float|WaitUntilState|".ToUpper();
+        public static string DataTypeRet( string typeName)
         {
-            {
-                "Classes", new[]
-                {
-                    "APIRequest", "APIRequestContext", "APIResponse", "Accessibility", "Browser", "BrowserContext",
-                    "BrowserType", "CDPSession", "CDPSessionEvent", "Clock", "ConsoleMessage", "Dialog", "Download",
-                    "ElementHandle", "FileChooser", "FormData", "Frame", "FrameLocator", "JSHandle", "Keyboard",
-                    "Locator", "Mouse", "Page", "Request", "Response", "Route", "Selectors", "TimeoutError", "Touchscreen",
-                    "Tracing", "Video", "WebError", "WebSocket", "WebSocketFrame", "WebSocketRoute", "Worker"
-                }
-            }
-        };
-        /// <summary>
-        /// 非 Page / Mouse 类型的处理方式选项
-        /// </summary>
-        public static string[] _handlerOptionsOthers = new[] { "Methods", "Events" };
-        /// <summary>
-        /// 处理方式映射：当种类为 Page 或 Mouse 时显示不同选项
-        /// </summary>
-        public static Dictionary<string, string[]> _handlerOptionsForPageAndMouse = new()
+            string[] parts = typeName.Split('.');
+            string lastPart = parts.Length > 0 ? parts[parts.Length - 1] : typeName;
+            string upperLastPart = lastPart.ToUpper();
+            return upperLastPart;
+        }
+        private static readonly string DefaultPlatforms = "抖音|快手|视频号|B站|小红书|知乎|微博|今日头条|西瓜视频|百家号|企鹅号|大鱼号|网易号|搜狐号|爱奇艺号|腾讯看点|一点资讯|趣头条|哔哩哔哩|皮皮虾|美拍|秒拍|微视|全民小视频|随刻|好看视频|新浪看点|快看点|东方号|惠头条|快传号|搜狗号";
+        private static void InitDataSource()
         {
+            if (!playwright_APIreferenceList.Any())
             {
-                "Methods", new[]
-                {
-                    "AddInitScriptAsync", "AddLocatorHandlerAsync", "AddScriptTagAsync", "AddStyleTagAsync", "BringToFrontAsync",
-                    "CloseAsync", "ContentAsync", "Context", "DragAndDropAsync", "EmulateMediaAsync", "EvaluateAsync",
-                    "EvaluateHandleAsync", "ExposeBindingAsync", "ExposeFunctionAsync", "Frame", "FrameByUrl", "FrameLocator",
-                    "Frames", "GetByAltText", "GetByLabel", "GetByPlaceholder", "GetByRole", "GetByTestId", "GetByText",
-                    "GetByTitle", "GoBackAsync", "GoForwardAsync", "GotoAsync", "IsClosed", "Locator", "MainFrame", "OpenerAsync",
-                    "PauseAsync", "PdfAsync", "ReloadAsync", "RemoveLocatorHandlerAsync", "RequestGCAsync", "RouteAsync",
-                    "RouteFromHARAsync", "RouteWebSocketAsync", "RunAndWaitForConsoleMessageAsync", "WaitForConsoleMessageAsync",
-                    "RunAndWaitForDownloadAsync", "WaitForDownloadAsync", "RunAndWaitForFileChooserAsync", "WaitForFileChooserAsync",
-                    "RunAndWaitForPopupAsync", "WaitForPopupAsync", "RunAndWaitForRequestAsync", "WaitForRequestAsync",
-                    "RunAndWaitForRequestFinishedAsync", "WaitForRequestFinishedAsync", "RunAndWaitForResponseAsync",
-                    "WaitForResponseAsync", "RunAndWaitForWebSocketAsync", "WaitForWebSocketAsync", "RunAndWaitForWorkerAsync",
-                    "WaitForWorkerAsync", "ScreenshotAsync", "SetContentAsync", "SetDefaultNavigationTimeout", "SetDefaultTimeout",
-                    "SetExtraHTTPHeadersAsync", "SetViewportSizeAsync", "TitleAsync", "UnrouteAsync", "UnrouteAllAsync", "Url",
-                    "Video", "ViewportSize", "WaitForFunctionAsync", "WaitForLoadStateAsync", "WaitForURLAsync", "Workers"
-                }
-            },
-            // 其他处理方式可以后续扩展
-        };
-
-
-        #endregion
-
-        protected static List<Playwright_APIreference> playwright_APIreference { get; private set; } = new List<Playwright_APIreference>();
-        private static readonly string DefaultDataType = "|string|";
-
-        public MultiPlatformAutomation_Playwright_APIreference_DataSource()
-        {
-            if (!playwright_APIreference.Any())
-            {
-                Playwright_APIreference obj01 = new Playwright_APIreference();
-                List<Playwright_APIreference> playwright_APIreferenceList = new List<Playwright_APIreference>();
+                PlatformAccountStep obj01 = new PlatformAccountStep();
                 try
                 {
                     Type type01 = obj01.GetType();
@@ -101,10 +49,11 @@ namespace AutomatedToolLibrary.多平台自动化.数据源
                         Playwright_APIreference playwright_APIreference01 = new Playwright_APIreference();
                         playwright_APIreference01.APIReference01 = propertyName01;
                         playwright_APIreference01.APIReference01Name = description01;
+                        playwright_APIreference01._object = value01;
                         playwright_APIreferenceList.Add(playwright_APIreference01);
 
                         // 如果属性是类类型，则递归进入
-                        if (value01 != null && !property01.PropertyType.IsPrimitive && !DefaultDataType.Contains(property01.PropertyType.ToString()))
+                        if (value01 != null && !property01.PropertyType.IsPrimitive && !DefaultDataType.Contains(DataTypeRet(property01.PropertyType.ToString())))
                         {
                             //TraverseProperties(value01);
                             #region 02
@@ -122,10 +71,11 @@ namespace AutomatedToolLibrary.多平台自动化.数据源
                                 playwright_APIreference02 = playwright_APIreference01.Adapt<Playwright_APIreference>();
                                 playwright_APIreference02.APIReference02 = propertyName02;
                                 playwright_APIreference02.APIReference02Name = description02;
+                                playwright_APIreference02._object = value02;
                                 playwright_APIreferenceList.Add(playwright_APIreference02);
 
                                 // 如果属性是类类型，则递归进入
-                                if (value02 != null && !property02.PropertyType.IsPrimitive && !DefaultDataType.Contains(property02.PropertyType.ToString()))
+                                if (value02 != null && !property02.PropertyType.IsPrimitive && !DefaultDataType.Contains(DataTypeRet(property02.PropertyType.ToString())))
                                 {
                                     //TraverseProperties(value02);
                                     #region 03
@@ -143,10 +93,11 @@ namespace AutomatedToolLibrary.多平台自动化.数据源
                                         playwright_APIreference03 = playwright_APIreference02.Adapt<Playwright_APIreference>();
                                         playwright_APIreference03.APIReference03 = propertyName03;
                                         playwright_APIreference03.APIReference03Name = description03;
+                                        playwright_APIreference03._object = value03;
                                         playwright_APIreferenceList.Add(playwright_APIreference03);
 
                                         // 如果属性是类类型，则递归进入
-                                        if (value03 != null && !property03.PropertyType.IsPrimitive && !DefaultDataType.Contains(property03.PropertyType.ToString()))
+                                        if (value03 != null && !property03.PropertyType.IsPrimitive && !DefaultDataType.Contains(DataTypeRet(property03.PropertyType.ToString())))
                                         {
                                             //TraverseProperties(value03);
                                             #region 04
@@ -164,10 +115,11 @@ namespace AutomatedToolLibrary.多平台自动化.数据源
                                                 playwright_APIreference04 = playwright_APIreference03.Adapt<Playwright_APIreference>();
                                                 playwright_APIreference04.APIReference04 = propertyName04;
                                                 playwright_APIreference04.APIReference04Name = description04;
+                                                playwright_APIreference04._object = value04;
                                                 playwright_APIreferenceList.Add(playwright_APIreference04);
 
                                                 // 如果属性是类类型，则递归进入
-                                                if (value04 != null && !property04.PropertyType.IsPrimitive && !DefaultDataType.Contains(property04.PropertyType.ToString()))
+                                                if (value04 != null && !property04.PropertyType.IsPrimitive && !DefaultDataType.Contains(DataTypeRet(property04.PropertyType.ToString())))
                                                 {
                                                     //TraverseProperties(value04);
                                                     #region 05
@@ -185,10 +137,11 @@ namespace AutomatedToolLibrary.多平台自动化.数据源
                                                         playwright_APIreference05 = playwright_APIreference04.Adapt<Playwright_APIreference>();
                                                         playwright_APIreference05.APIReference05 = propertyName05;
                                                         playwright_APIreference05.APIReference05Name = description05;
+                                                        playwright_APIreference05._object = value05;
                                                         playwright_APIreferenceList.Add(playwright_APIreference05);
 
                                                         // 如果属性是类类型，则递归进入
-                                                        if (value05 != null && !property05.PropertyType.IsPrimitive && !DefaultDataType.Contains(property05.PropertyType.ToString()))
+                                                        if (value05 != null && !property05.PropertyType.IsPrimitive && !DefaultDataType.Contains(DataTypeRet(property05.PropertyType.ToString())))
                                                         {
                                                             //TraverseProperties(value05);
                                                             #region 06
@@ -206,10 +159,11 @@ namespace AutomatedToolLibrary.多平台自动化.数据源
                                                                 playwright_APIreference06 = playwright_APIreference05.Adapt<Playwright_APIreference>();
                                                                 playwright_APIreference06.APIReference06 = propertyName06;
                                                                 playwright_APIreference06.APIReference06Name = description06;
+                                                                playwright_APIreference06._object = value06;
                                                                 playwright_APIreferenceList.Add(playwright_APIreference06);
 
                                                                 // 如果属性是类类型，则递归进入
-                                                                if (value06 != null && !property06.PropertyType.IsPrimitive && !DefaultDataType.Contains(property06.PropertyType.ToString()))
+                                                                if (value06 != null && !property06.PropertyType.IsPrimitive && !DefaultDataType.Contains(DataTypeRet(property06.PropertyType.ToString())))
                                                                 {
                                                                     //TraverseProperties(value06);
                                                                 }
@@ -237,12 +191,82 @@ namespace AutomatedToolLibrary.多平台自动化.数据源
 
             }
         }
+        public static List<Playwright_APIreference> GetPlaywrightAPIReference(Playwright_APIreference playwright_APIreference)
+        {
+            if (!playwright_APIreferenceList.Any())
+            {
+                InitDataSource();
+            }
+            List<Playwright_APIreference> playwright_APIreferenceListRet = new List<Playwright_APIreference>();
+            if (!string.IsNullOrWhiteSpace(playwright_APIreference.APIReference01))
+            {
+                playwright_APIreferenceListRet = playwright_APIreferenceList.Where(x => x.APIReference01 == playwright_APIreference.APIReference01).ToList();
+            }
+            else
+            {
+                playwright_APIreferenceListRet = playwright_APIreferenceList.Where(x => string.IsNullOrWhiteSpace(x.APIReference02)).ToList();
+            }
+            if (!string.IsNullOrWhiteSpace(playwright_APIreference.APIReference02))
+            {
+                playwright_APIreferenceListRet = playwright_APIreferenceListRet.Where(x => x.APIReference02 == playwright_APIreference.APIReference02).ToList();
+            }
+            else
+            {
+                playwright_APIreferenceListRet = playwright_APIreferenceListRet.Where(x => string.IsNullOrWhiteSpace(x.APIReference03)).ToList();
+            }
+            if (!string.IsNullOrWhiteSpace(playwright_APIreference.APIReference03))
+            {
+                playwright_APIreferenceListRet = playwright_APIreferenceListRet.Where(x => x.APIReference03 == playwright_APIreference.APIReference03).ToList();
+            }
+            else
+            {
+                playwright_APIreferenceListRet = playwright_APIreferenceListRet.Where(x => string.IsNullOrWhiteSpace(x.APIReference04)).ToList();
+            }
+            if (!string.IsNullOrWhiteSpace(playwright_APIreference.APIReference04))
+            {
+                playwright_APIreferenceListRet = playwright_APIreferenceListRet.Where(x => x.APIReference04 == playwright_APIreference.APIReference04).ToList();
+            }
+            else
+            {
+                playwright_APIreferenceListRet = playwright_APIreferenceListRet.Where(x => string.IsNullOrWhiteSpace(x.APIReference05)).ToList();
+            }
+            if (!string.IsNullOrWhiteSpace(playwright_APIreference.APIReference05))
+            {
+                playwright_APIreferenceListRet = playwright_APIreferenceListRet.Where(x => x.APIReference05 == playwright_APIreference.APIReference05).ToList();
+            }
+            else
+            {
+                playwright_APIreferenceListRet = playwright_APIreferenceListRet.Where(x => string.IsNullOrWhiteSpace(x.APIReference06)).ToList();
+            }
+            if (!string.IsNullOrWhiteSpace(playwright_APIreference.APIReference06))
+            {
+                playwright_APIreferenceListRet = playwright_APIreferenceListRet.Where(x => x.APIReference06 == playwright_APIreference.APIReference06).ToList();
+            }
+            //else
+            //{
+            //    playwright_APIreferenceListRet = playwright_APIreferenceListRet.Where(x => string.IsNullOrWhiteSpace(x.APIReference06)).ToList();
+            //}
+            return playwright_APIreferenceListRet;
+        }
+        public static List<string> GetPlatforms()
+        {
+            List<string> platforms = new List<string>();
+            if (DefaultPlatforms != null)
+            {
+                foreach (var platform in DefaultPlatforms.Split('|'))
+                {
+                    platforms.Add(platform);
+                }
+            }
+            return platforms;
+        }
     }
     /// <summary>
     /// "API参考""类""页面","方法","跳转页面","使用方法1"
     /// </summary>
     public class Playwright_APIreference
     {
+        public object _object { get; set; }
         public string APIReference01 { get; set; }
         public string APIReference02 { get; set; }
         public string APIReference03 { get; set; }

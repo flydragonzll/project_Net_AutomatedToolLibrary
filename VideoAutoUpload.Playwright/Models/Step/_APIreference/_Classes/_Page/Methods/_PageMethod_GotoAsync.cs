@@ -21,7 +21,7 @@ namespace VideoAutoUpload.Playwright.Models.Step
 
         [Description("页面跳转选项配置")]
         [JsonPropertyName("_pageGotoOptions")]
-        public _PageMethod_GotoAsync_PageGotoOptions? _pageGotoOptions { get; set; }
+        public _PageMethod_GotoAsync_PageGotoOptions? _pageGotoOptions { get; set; } = new _PageMethod_GotoAsync_PageGotoOptions();
 
         [Description("返回的响应对象")]
         [JsonPropertyName("_ret_IResponse")]
